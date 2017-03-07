@@ -442,6 +442,8 @@ fsal_status_t vfs_getextattr_value_by_name(struct fsal_obj_handle *obj_hdl,
 	if (rc < 0) {
 		rc = errno;
 		close(fd);
+		LogDebug(COMPONENT_NFS_V4,
+			 "vfs_getextattr_value_by_name fgetxattr failed with %d", rc);
 		return fsalstat(posix2fsal_error(rc), rc);
 	}
 	/* the xattr value can be a binary, or a string.

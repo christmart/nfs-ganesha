@@ -673,6 +673,8 @@ fsal_status_t fsal_lookup(struct fsal_obj_handle *parent,
 
 	*obj = NULL;
 
+	LogDebug(COMPONENT_FSAL, "lookup name = %s", name);
+
 	if (parent->type != DIRECTORY) {
 		*obj = NULL;
 		return fsalstat(ERR_FSAL_NOTDIR, 0);

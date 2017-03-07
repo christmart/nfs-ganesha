@@ -1486,6 +1486,8 @@ fsal_status_t vfs_getattr2(struct fsal_obj_handle *obj_hdl,
 	status = find_fd(&my_fd, obj_hdl, false, NULL, FSAL_O_ANY,
 			 &has_lock, &closefd, false);
 
+	LogDebug(COMPONENT_FSAL,"find_fd fd=%d type=%d", my_fd, obj_hdl->type);
+
 	if (FSAL_IS_ERROR(status)) {
 		if (obj_hdl->type == SYMBOLIC_LINK &&
 		    status.major == ERR_FSAL_PERM) {
